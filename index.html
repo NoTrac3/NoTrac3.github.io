@@ -17,21 +17,18 @@
             background: linear-gradient(135deg, #0c1a2a, #1a1439);
             min-height: 100vh;
             color: #e0f7ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
         
         /* Divine Glow Elements */
         .divine-light {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
             filter: blur(60px);
             z-index: 0;
             opacity: 0.5;
+            pointer-events: none;
         }
         
         .light-purple {
@@ -98,24 +95,13 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
             text-align: center;
             position: relative;
             z-index: 10;
             padding: 40px 20px;
-            background: rgba(10, 15, 30, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 0 50px rgba(138, 43, 226, 0.2);
-            animation: container-glow 5s infinite alternate;
-        }
-        
-        @keyframes container-glow {
-            0% { box-shadow: 0 0 50px rgba(138, 43, 226, 0.2); }
-            50% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.3), 0 0 80px rgba(0, 204, 153, 0.2); }
-            100% { box-shadow: 0 0 50px rgba(93, 156, 255, 0.3); }
+            margin: 0 auto;
         }
         
         .clan-badge {
@@ -285,6 +271,73 @@
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
         
+        .content-section {
+            background: rgba(10, 15, 30, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.2);
+            animation: container-glow 5s infinite alternate;
+            padding: 40px;
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+        
+        @keyframes container-glow {
+            0% { box-shadow: 0 0 50px rgba(138, 43, 226, 0.2); }
+            50% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.3), 0 0 80px rgba(0, 204, 153, 0.2); }
+            100% { box-shadow: 0 0 50px rgba(93, 156, 255, 0.3); }
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #5d9cff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        .section-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(26, 42, 108, 0.4);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 204, 153, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #00cc99;
+        }
+        
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #a0e6ff;
+        }
+        
         .clan-motto {
             font-size: 1.4rem;
             color: #e0f7ff;
@@ -334,21 +387,26 @@
         }
         
         footer {
-            margin-top: 40px;
-            padding: 20px;
+            margin-top: 80px;
+            padding: 30px;
             font-size: 1rem;
             color: #d4af37;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
             letter-spacing: 1px;
+            text-align: center;
+            background: rgba(10, 15, 30, 0.3);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
         
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .clan-name {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .tagline {
                 font-size: 1.2rem;
+                padding: 0 15px;
             }
             
             .nav-item {
@@ -360,11 +418,28 @@
             .divine-light {
                 transform: scale(0.7);
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 25px 15px;
+                margin: 30px 15px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 480px) {
             .clan-name {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .tagline {
@@ -373,10 +448,30 @@
             
             .nav-item {
                 min-width: 100%;
+                padding: 18px;
             }
             
             .divine-light {
                 transform: scale(0.5);
+            }
+            
+            .clan-badge {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .clan-badge i {
+                font-size: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .clan-motto {
+                font-size: 1.2rem;
+                padding: 20px 15px;
+                margin: 30px 15px;
             }
         }
     </style>
@@ -414,6 +509,52 @@
             </a>
         </div>
         
+        <div class="content-section">
+            <h2 class="section-title">Our Divine Mission</h2>
+            <div class="section-content">
+                <div class="feature-card">
+                    <i class="fas fa-eye-slash"></i>
+                    <h3>Untraceable Operations</h3>
+                    <p>We specialize in operations that leave no digital footprint. Our techniques ensure complete anonymity and security in all activities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Elite Community</h3>
+                    <p>Join a covenant of skilled individuals dedicated to mutual growth and protection. Our community is built on trust and excellence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Advanced Training</h3>
+                    <p>Access divine-level training in cybersecurity, intelligence gathering, and digital stealth. Elevate your skills to the highest level.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">Divine Principles</h2>
+            <div class="section-content">
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Sacred Covenant</h3>
+                    <p>Our bond is unbreakable, forged in the fires of mutual respect and shared purpose. We stand together as one divine entity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>No Trace Philosophy</h3>
+                    <p>We operate in the shadows, leaving no evidence of our presence. Our actions are felt, not seen.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Divine Protection</h3>
+                    <p>Members of the covenant receive divine protection and support. Your safety is our highest priority.</p>
+                </div>
+            </div>
+        </div>
+        
         <p class="clan-motto">
             In the digital wilderness, we leave <span>no trace</span> but our legacy.<br>
             Through unity, we forge <span>unbreakable covenants</span>.
@@ -421,6 +562,7 @@
         
         <footer>
             <p>NoTrac3 Covenant © 2023 | Secure Connection Established</p>
+            <p>Divine Protection Protocol v3.7 | All Systems Operational</p>
         </footer>
     </div>
     
@@ -459,7 +601,7 @@
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 
                 particle.style.cssText = `
-                    position: absolute;
+                    position: fixed;
                     width: ${size}px;
                     height: ${size}px;
                     background: ${color};
@@ -470,6 +612,7 @@
                     filter: blur(${size/2}px);
                     animation: float-particle ${duration}s infinite ${delay}s linear;
                     z-index: 1;
+                    pointer-events: none;
                 `;
                 
                 container.appendChild(particle);
